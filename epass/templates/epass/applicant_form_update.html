@@ -1,0 +1,19 @@
+{% extends parent_template|default:"epass/base_epass.html" %}
+
+{% block title %}
+{{ block.super }} - Update Applicant
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="tmarg">
+    <form action="{{ applicant.get_update_url }}" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Update Applicant</button>
+  </form>
+  </div>
+</div>
+{% endblock %}
+
+

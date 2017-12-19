@@ -1,0 +1,33 @@
+{% extends parent_template|default:"epass/base_epass.html" %}
+
+{% block title %}
+{{ block.super }} - Applicants
+{% endblock %}
+
+
+{% block epass_content %}
+
+<div class="row tmarg">
+  <h2>Applicant List</h2>
+  <div class="mobile">
+    <a class="button button-primary" href="{% url 'epass_applicant_create' %}">Add Applicant</a>
+  </div>
+</div>
+
+<div class="row tmarg">
+  <ul>
+    {% for applicant in applicant_list %}
+      <li>
+        <a href="{{ applicant.get_absolute_url }}">{{ applicant.form_number }}</a>
+          <ul class="inline">
+              <li><a href="{{ applicant.get_update_url }}" class="button">Edit Applicant</a></li>
+              <li><a href="{{ applicant.get_delete_url }}" class="button">Delete Applicant</a></li>
+          </ul>
+      </li>
+    {% empty %}
+      <li><em>No Applicants Available</em></li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% endblock %}

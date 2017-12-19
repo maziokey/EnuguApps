@@ -1,0 +1,84 @@
+{% extends parent_template|default:"epass/base_epass.html" %}
+
+{% load widget_tweaks %}
+
+{% block title %}
+{{ block.super }} - Search
+{% endblock %}
+
+{% block epass_content %}
+<div class="row tmarg">
+  <form method="get">
+    {% csrf_token %}
+    
+    <div>
+      <h4 style="margin-top: 0">Filter</h4>
+      <div class="row">
+        <div class="four columns">
+          {{ filter.form.first_name.label_tag }}
+          {% render_field filter.form.first_name class="form-control" %}
+        </div>
+        <div class="four columns">
+          {{ filter.form.last_name.label_tag }}
+          {% render_field filter.form.last_name class="form-control" %}
+        </div>
+        <div class="four columns">
+          {{ filter.form.purchase_date.label_tag }}
+          {% render_field filter.form.purchase_date class="form-control" %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="four columns">
+          {{ filter.form.passport_number.label_tag }}
+          {% render_field filter.form.passport_number class="form-control" %}
+        </div>
+        <div class="four columns">
+          {{ filter.form.form_number.label_tag }}
+          {% render_field filter.form.form_number class="form-control" %}
+        </div>
+        <div class="four columns">
+          {{ filter.form.sticker_number.label_tag }}
+          {% render_field filter.form.sticker_number class="form-control" %}
+        </div>
+      </div>
+      <button type="submit" class="button button-primary">Search</button>
+    </div>
+  </form>
+</div>
+
+  <div class="row">
+  <table class="u-full-width">
+    <thead>
+      <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Purchase Date</th>
+        <th>Passport Number</th>
+        <th>Form Number</th>
+        <th>Sticker Number</th>
+        <th>Extension Period</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for applicant in filter.qs %}
+        <tr>
+          <td>{{ applicant.first_name }}</td>
+          <td>{{ applicant.last_name }}</td>
+          <td>{{ applicant.purchase_date }}</td>
+          <td>{{ applicant.passport_number }}</td>
+          <td><a href="{{ applicant.get_absolute_url }}">{{ applicant.form_number }}</a></td>
+          <td>{{ applicant.sticker_number }}</td>
+          <td>{{ applicant.extension_period }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5">No data</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+{% endblock %}
+
+
+

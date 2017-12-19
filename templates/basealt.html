@@ -1,0 +1,76 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>
+      {% block title %}
+        Epass Extension Lookup
+      {% endblock %}
+    </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--[if IE]><script
+      src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
+    </script><![endif]-->
+    <link rel="stylesheet" type="text/css" href="{% static 'site/normalize.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'site/skeleton.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'site/style.css' %}" />
+    {% block head %}{% endblock %}
+  </head>
+
+  <body>
+
+    <div class="container"><!-- container -->
+      <header class="row">
+          <div class="offset-by-three ten columns">
+            <h1 class="logo">Epass Extension Lookup</h1>
+          </div>
+      </header>
+
+    <nav class="navbar"><!--new nav -->
+      <div class="container">
+        <ul class="navbar-list">
+          <li class="navbar-item"><a class="navbar-link" href="{% url 'epass_applicant_list' %}">Applicant</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="{% url 'epass_search' %}">Search</a></li>
+        </ul>
+      </div>
+ </nav> 
+
+      <!--<nav> original nav 
+        <ul>
+          <li><a href=""></a></li>
+          <li><a href=""></a></li>
+        </ul>
+      </nav>
+      -->
+
+      {% if messages %}
+        <div class="row">
+          <div class="twelve columns">
+            <ul class="messages">
+              {% for message in messages %}
+                {% if message.tags %}
+                  <li class="{{ message.tags }}">
+                {% else %}
+                  <li>
+                {% endif %}
+                {{ message }}</li>
+              {% endfor %}
+        </ul></div></div>
+      {% endif %}
+      <main>
+        {% block content %}
+          This is default content!
+        {% endblock %}
+      </main>
+    </div><!-- container -->
+
+    <footer class="container">
+      <p>&copy; 2017 <a href="https://github.com/maziokey">Maziokey</a></p>
+    </footer>
+
+  </body>
+
+</html>

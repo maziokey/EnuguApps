@@ -1,0 +1,64 @@
+{% extends parent_template|default:"epass/base_epass.html" %}
+
+{% block title %}
+{{ block.super }} - {{ applicant.passport_number|title }}
+{% endblock %}
+
+{% block content %}
+<article class="tmarg">
+<div class="row">
+  <div class="offset-by-four eight columns">
+    <h2>{{ applicant.form_number }}</h2>
+    <ul class="inline">
+        <li><a href="{{ applicant.get_update_url }}" class="button">Edit Applicant</a></li>
+        <li><a href="{{ applicant.get_delete_url }}" class="button">Delete Applicant</a></li>
+    </ul>
+  </div>
+</div>
+</article>
+
+<div class="row">
+  <table class="u-full-width">
+    <thead>
+      <tr>
+        <th>First name</th>
+        <th>Surname</th>
+        <th>Purchase Date</th>
+        <th>Passport Number</th>
+        <th>Form Number</th>
+        <th>Sticker Number</th>
+        <th>Extension Period</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>{{ applicant.first_name|title }}</td>
+          <td>{{ applicant.last_name|title }}</td>
+          <td>{{ applicant.purchase_date|date:"F jS, Y" }}</td>
+          <td>{{ applicant.passport_number }}</td>
+          <td>{{ applicant.form_number }}</td>
+          <td>{{ applicant.sticker_number }}</td>
+          <td>{{ applicant.extension_period }}</td>
+        </tr>
+    </tbody>
+  </table>
+  </div>
+{% endblock %}
+
+<!--
+<dl>
+    <dt>First Name</dt>
+      <dd>{{ applicant.first_name|title }}</dd>
+    <dt>Surname</dt>
+      <dd>{{ applicant.last_name|title }}</dd>
+    <dt>Form Number</dt>
+      <dd>{{ applicant.form_number }}</dd>
+    <dt>Sticker Number</dt>
+      <dd>{{ applicant.sticker_number }}</dd>
+    <dt>Extension Period</dt>
+      <dd>{{ applicant.extension_period }}</dd>
+    <dt>Date of Purchase</dt>
+      <dd>{{ applicant.purchase_date|date:"F jS, Y" }}</dd>
+  </dl>
+  -->
+

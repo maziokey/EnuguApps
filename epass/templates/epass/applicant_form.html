@@ -1,0 +1,20 @@
+{% extends parent_template|default:"epass/base_epass.html" %}
+
+{% block title %}
+{{ block.super }} - Add Applicant
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="tmarg">
+    <form action="{% url 'epass_applicant_create' %}" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Add Applicant</button>
+  </form>
+  </div>
+</div>
+{% endblock %}
+
+
+
