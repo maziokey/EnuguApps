@@ -15,14 +15,21 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from django.views.generic import RedirectView
-#from django.urls import path
+from django.views.generic import RedirectView, TemplateView
+from django.urls import path
 
 from epass import urls as epass_urls
+from contact import urls as contact_urls
+#from epass.views import home
 
 urlpatterns = [
-    url(r'^$', RedirectView.as_view(pattern_name='epass_applicant_list', permanent=False)),
+    #url(r'^$', RedirectView.as_view(pattern_name='epass_applicant_list', permanent=False)),
+    url(r'^$', RedirectView.as_view(pattern_name='home', permanent=False)),
+    #path('', home, name='home'),
+    path('accounts/', include('django.contrib.auth.urls')),
+    url(r'^about/$', TemplateView.as_view(template_name='site/about.html'), name='about_site'),
     #path('admin/', admin.site.urls),
     url(r'^admin/', admin.site.urls),
     url(r'^epass/', include(epass_urls)),
+    url(r'^contact/', include(contact_urls)),
 ]

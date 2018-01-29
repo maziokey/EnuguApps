@@ -32,8 +32,21 @@
     <nav class="navbar"><!--new nav -->
       <div class="container">
         <ul class="navbar-list">
-          <li class="navbar-item"><a class="navbar-link" href="{% url 'epass_applicant_list' %}">Applicant</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="{% url 'home' %}">Home</a></li>
+          <!--<li class="navbar-item"><a class="navbar-link" href="{% url 'epass_applicant_list' %}">Applicant</a></li>-->
+          {% if user.is_authenticated %}
           <li class="navbar-item"><a class="navbar-link" href="{% url 'epass_search' %}">Search</a></li>
+          {% endif %}
+          <li class="navbar-item"><a class="navbar-link" href="{% url 'contact' %}">Contact</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="{% url 'about_site' %}">About</a></li>
+          {% if user.is_authenticated %}
+          <li class="navbar-item">
+            <strong>{{ user.username }}</strong> -  
+            <a class="navbar-link" href="{% url 'logout' %}">Logout</a>
+          </li>
+          {% else %}
+          <li class="navbar-item"><a class="navbar-link" href="{% url 'login' %}">Log in</a></li>
+          {% endif %}
         </ul>
       </div>
  </nav> 
@@ -60,6 +73,7 @@
               {% endfor %}
         </ul></div></div>
       {% endif %}
+
       <main>
         {% block content %}
           This is default content!
