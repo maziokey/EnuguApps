@@ -7,6 +7,14 @@
 {% endblock %}
 
 {% block epass_content %}
+<div class='row'>
+  <div class="tmarg">
+    <h4 style="margin-top: 0">Add a new Form</h4>
+    <div class="mobile">
+    <a class="button button-primary" href="{% url 'epass_applicant_create' %}">Add Form</a>
+  </div>
+  </div>
+</div>
 <div class="row tmarg">
   <form method="get">
     {% csrf_token %}

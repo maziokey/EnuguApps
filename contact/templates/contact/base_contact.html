@@ -1,0 +1,11 @@
+{% extends parent_template|default:"basealt.html" %}
+
+{% block content %}
+<div class="row">
+  <section class="twelve columns">
+    {% block epass_content %}
+	   This is default content!
+    {% endblock %}
+  </section>
+</div>
+{% endblock %}

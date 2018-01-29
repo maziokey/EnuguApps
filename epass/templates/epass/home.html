@@ -1,0 +1,16 @@
+{% extends parent_template|default:"epass/base_epass.html" %}
+
+{% block title %}
+{{ block.super }} - Home
+{% endblock %}
+
+{% block epass_content %}
+
+<div class="row tmarg">
+  <h2>Welcome</h2>
+  <p>
+  	If you already have an account, go ahead and <a href="{% url 'login' %}">log in</a>. If you need an account, contact admin here!!!
+  </p>
+</div>
+
+{% endblock %}
