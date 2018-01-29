@@ -27,7 +27,7 @@ SECRET_KEY = 'g=(57*8v@46(fod0mj+y@!0%60jnkqs*j0vz&cw!m06ib*fcnv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['enuguapps.pythoneverywhere.com',]
+ALLOWED_HOSTS = ['enuguapps.pythonanywhere.com', ]
 
 
 # Application definition
