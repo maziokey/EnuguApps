@@ -28,6 +28,7 @@ SECRET_KEY = 'g=(57*8v@46(fod0mj+y@!0%60jnkqs*j0vz&cw!m06ib*fcnv'
 DEBUG = True
 
 
+#ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['enuguapps.pythonanywhere.com', ]
 
 
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'epass',
     'contact',
     'core',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -187,3 +189,6 @@ LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = 'epass_search'
 
 LOGOUT_REDIRECT_URL = 'home'
+
+# Import Export Config
+IMPORT_EXPORT_USE_TRANSACTIONS = True

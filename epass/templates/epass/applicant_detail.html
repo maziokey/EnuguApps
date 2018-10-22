@@ -9,10 +9,14 @@
 <div class="row">
   <div class="offset-by-four eight columns">
     <h2>{{ applicant.form_number }}</h2>
+    {% if applicant.Added_by == user %}
     <ul class="inline">
         <li><a href="{{ applicant.get_update_url }}" class="button">Edit Applicant</a></li>
         <li><a href="{{ applicant.get_delete_url }}" class="button">Delete Applicant</a></li>
     </ul>
+    {% else %}
+      <p>You are not allowed to edit this applicant.</p>
+    {% endif %}
   </div>
 </div>
 </article>
@@ -61,4 +65,3 @@
       <dd>{{ applicant.purchase_date|date:"F jS, Y" }}</dd>
   </dl>
   -->
-

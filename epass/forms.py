@@ -14,6 +14,7 @@ class SlugCleanMixin:
         return new_slug
 
 class ApplicantForm(SlugCleanMixin, forms.ModelForm):
-	class Meta:
-		model = Applicant
-		fields = '__all__'
+    class Meta:
+        model = Applicant
+        fields = ['first_name', 'last_name', 'passport_number', 'form_number', 'sticker_number', 'extension_period', 'purchase_date', 'slug',  ]
+    

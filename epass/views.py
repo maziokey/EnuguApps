@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import redirect_to_login
 from django.utils.decorators import method_decorator
 
 from .models import Applicant
@@ -24,16 +25,27 @@ class ApplicantList(ListView):
 class ApplicantDetail(DetailView):
 	model = Applicant
 
-@method_decorator([login_required], name='dispatch')
+@method_decorator(login_required, name='dispatch')
 class ApplicantCreate(CreateView):
-	form_class = ApplicantForm
-	model = Applicant
+    form_class = ApplicantForm
+    model = Applicant
+
+    def form_valid(self, form):
+        applicant = form.save(commit=False)
+        applicant.Added_by = self.request.user
+        applicant.save()
+        return redirect('epass_applicant_detail', slug=applicant.slug)
 
 @method_decorator([login_required], name='dispatch')
 class ApplicantUpdate(UpdateView):
-	form_class = ApplicantForm
-	model = Applicant
-	template_name_suffix = '_form_update'
+    form_class = ApplicantForm
+    model = Applicant
+    template_name_suffix = '_form_update'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(Added_by=self.request.user)
+
 
 @method_decorator([login_required], name='dispatch')
 class ApplicantDelete(DeleteView):

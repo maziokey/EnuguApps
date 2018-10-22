@@ -22,6 +22,9 @@ from epass import urls as epass_urls
 from contact import urls as contact_urls
 #from epass.views import home
 
+admin.site.site_header = 'Enugu Apps Admin'
+admin.site.site_title = 'Enugu Apps Site Admin'
+
 urlpatterns = [
     #url(r'^$', RedirectView.as_view(pattern_name='epass_applicant_list', permanent=False)),
     url(r'^$', RedirectView.as_view(pattern_name='home', permanent=False)),
