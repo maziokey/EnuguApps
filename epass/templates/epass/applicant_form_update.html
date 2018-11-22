@@ -5,15 +5,58 @@
 {% endblock %}
 
 {% block content %}
-<div class="row">
+<form action="{{ applicant.get_update_url }}" method="post">
   <div class="tmarg">
-    <form action="{{ applicant.get_update_url }}" method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Update Applicant</button>
-  </form>
+    {% csrf_token %}
+    <div class="row">
+      <div class="six columns">
+        {{ form.subject.errors }}
+        <label for="{{ form.subject.first_name }}">First Name:</label>
+        {{ form.first_name }}
+      </div>
+      <div class="six columns">
+        {{ form.subject.errors }}
+        <label for="{{ form.subject.last_name }}">Last Name:</label>
+        {{ form.last_name }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="six columns">
+        {{ form.subject.errors }}
+        <label for="{{ form.subject.passport_number }}">Passport Number:</label>
+        {{ form.passport_number }}
+      </div>
+      <div class="six columns">
+        {{ form.subject.errors }}
+        <label for="{{ form.subject.form_number }}">Form Number:</label>
+        {{ form.form_number }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="six columns">
+        {{ form.subject.errors }}
+        <label for="{{ form.subject.sticker_number }}">Sticker Number:</label>
+        {{ form.sticker_number }}
+      </div>
+      <div class="six columns">
+        {{ form.subject.errors }}
+        <label for="{{ form.subject.extension_period }}">Extension Period:</label>
+        {{ form.extension_period }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="six columns">
+        {{ form.subject.errors }}
+        <label for="{{ form.subject.purchase_date }}">Purchase Date:</label>
+        {{ form.purchase_date }}
+      </div>
+      <div class="six columns">
+        {{ form.subject.errors }}
+        <label for="{{ form.subject.slug }}">Slug:</label>
+        {{ form.slug }}
+      </div>
+    </div>
+      <button class="button-primary" type="submit">Update Applicant</button>
   </div>
-</div>
+</form>
 {% endblock %}
-
-

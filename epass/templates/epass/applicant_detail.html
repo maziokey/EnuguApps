@@ -6,19 +6,21 @@
 
 {% block content %}
 <article class="tmarg">
-<div class="row">
-  <div class="offset-by-four eight columns">
-    <h2>{{ applicant.form_number }}</h2>
-    {% if applicant.Added_by == user %}
-    <ul class="inline">
-        <li><a href="{{ applicant.get_update_url }}" class="button">Edit Applicant</a></li>
-        <li><a href="{{ applicant.get_delete_url }}" class="button">Delete Applicant</a></li>
-    </ul>
-    {% else %}
-      <p>You are not allowed to edit this applicant.</p>
-    {% endif %}
+  <div class="row">
+    <div class="twelve columns">
+      <h2 class="fheader">{{ applicant.form_number }}</h2>
+    </div>
   </div>
-</div>
+  <div class="row">
+    <div class="offset-by-four eight columns">
+      {% if applicant.Added_by == user %}
+      <a href="{{ applicant.get_update_url }}" class="button button-primary">Edit Applicant</a>
+      <a href="{{ applicant.get_delete_url }}" class="button button-primary">Delete Applicant</a>
+      {% else %}
+        <p>You are not allowed to edit this applicant.</p>
+      {% endif %}
+    </div>
+  </div>
 </article>
 
 <div class="row">
