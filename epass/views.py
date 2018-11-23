@@ -52,9 +52,8 @@ class ApplicantDelete(DeleteView):
 	model = Applicant
 	success_url = reverse_lazy('epass_applicant_list')
 
-"""
+@login_required
 def search(request):
 	applicant_list = Applicant.objects.all()
 	applicant_filter = ApplicantFilter(request.GET, queryset=applicant_list)
-	return render(request, 'epass/applicant_list.html', {'filter': applicant_filter})
-"""
+	return render(request, 'epass/search_list.html', {'filter': applicant_filter})

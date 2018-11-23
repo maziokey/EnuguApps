@@ -4,10 +4,12 @@ body {
 }
 
 .navbar {
-  display: none; }
+  display: none;
+ }
 
 .navbar + .docs-section {
-    border-top-width: 0; }
+    border-top-width: 0;
+   }
   .navbar,
   .navbar-spacer {
     display: block;
@@ -16,14 +18,18 @@ body {
     background: #fff;
     z-index: 99;
     border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee; }
+    border-bottom: 1px solid #eee;
+  }
   .navbar-spacer {
-    display: none; }
+    display: none;
+  }
   .navbar > .container {
-    width: 100%; }
+    width: 100%;
+  }
   .navbar-list {
     list-style: none;
-    margin-bottom: 0; }
+    margin-bottom: 0;
+  }
   .navbar-item {
     position: relative;
     float: left;
@@ -43,12 +49,14 @@ body {
     .has-docked-nav .navbar {
     position: fixed;
     top: 0;
-    left: 0; }
+    left: 0;
+  }
   .has-docked-nav .navbar-spacer {
     display: block; }
   /* Re-overiding the width 100% declaration to match size of % based container */
   .has-docked-nav .navbar > .container {
-    width: 80%; }
+    width: 80%;
+  }
 
     .tmarg {
     	margin-top: 20px;

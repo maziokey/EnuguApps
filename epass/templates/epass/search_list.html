@@ -18,35 +18,35 @@
 <div class="row tmarg">
   <form method="get">
     {% csrf_token %}
-    
+
     <div>
       <h4 style="margin-top: 0">Filter</h4>
       <div class="row">
         <div class="four columns">
           {{ filter.form.first_name.label_tag }}
-          {% render_field filter.form.first_name class="form-control" %}
+          {% render_field filter.form.first_name class="u-full-width" %}
         </div>
         <div class="four columns">
           {{ filter.form.last_name.label_tag }}
-          {% render_field filter.form.last_name class="form-control" %}
+          {% render_field filter.form.last_name class="u-full-width" %}
         </div>
         <div class="four columns">
           {{ filter.form.purchase_date.label_tag }}
-          {% render_field filter.form.purchase_date class="form-control" %}
+          {% render_field filter.form.purchase_date class="u-full-width" %}
         </div>
       </div>
       <div class="row">
         <div class="four columns">
           {{ filter.form.passport_number.label_tag }}
-          {% render_field filter.form.passport_number class="form-control" %}
+          {% render_field filter.form.passport_number class="u-full-width" %}
         </div>
         <div class="four columns">
           {{ filter.form.form_number.label_tag }}
-          {% render_field filter.form.form_number class="form-control" %}
+          {% render_field filter.form.form_number class="u-full-width" %}
         </div>
         <div class="four columns">
           {{ filter.form.sticker_number.label_tag }}
-          {% render_field filter.form.sticker_number class="form-control" %}
+          {% render_field filter.form.sticker_number class="u-full-width" %}
         </div>
       </div>
       <button type="submit" class="button button-primary">Search</button>
@@ -87,6 +87,3 @@
   </table>
   </div>
 {% endblock %}
-
-
-

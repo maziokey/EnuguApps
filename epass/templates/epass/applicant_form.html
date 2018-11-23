@@ -1,20 +1,62 @@
 {% extends parent_template|default:"epass/base_epass.html" %}
 
+{% load widget_tweaks %}
+
 {% block title %}
 {{ block.super }} - Add Applicant
 {% endblock %}
 
 {% block content %}
-<div class="row">
+<form action="{% url 'epass_applicant_create' %}" method="post">
   <div class="tmarg">
-    <form action="{% url 'epass_applicant_create' %}" method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Add Applicant</button>
-  </form>
+    {% csrf_token %}
+
+    {% for hidden_field in form.hidden_fields %}
+      {{ hidden_field }}
+    {% endfor %}
+
+    <div class="row">
+      <div class="four columns">
+        <label for="{{ form.subject.first_name }}">First Name:</label>
+        {% render_field form.first_name class="u-full-width" %}
+      </div>
+      <div class="four columns">
+        <label for="{{ form.subject.last_name }}">Last Name:</label>
+        {% render_field form.last_name class="u-full-width" %}
+      </div>
+      <div class="four columns">
+        <label for="{{ form.subject.passport_number }}">Passport Number:</label>
+        {% render_field form.passport_number class="u-full-width" %}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="four columns">
+        <label for="{{ form.subject.form_number }}">Form Number:</label>
+        {% render_field form.form_number class="u-full-width" %}
+      </div>
+      <div class="four columns">
+        <label for="{{ form.subject.sticker_number }}">Sticker Number:</label>
+        {% render_field form.sticker_number class="u-full-width" %}
+      </div>
+      <div class="four columns">
+        <label for="{{ form.subject.extension_period }}">Extension Period:</label>
+        {% render_field form.extension_period class="u-full-width" %}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="four columns">
+        <label for="{{ form.subject.purchase_date }}">Purchase Date:</label>
+        {% render_field form.purchase_date class="u-full-width" %}
+      </div>
+      <div class="four columns">
+        <label for="{{ form.subject.slug }}">Slug:</label>
+        {% render_field form.slug class="u-full-width" %}
+      </div>
+    </div>
+
+      <button class="button-primary" type="submit">Add Applicant</button>
   </div>
-</div>
+</form>
 {% endblock %}
-
-
-

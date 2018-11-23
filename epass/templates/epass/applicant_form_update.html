@@ -1,5 +1,7 @@
 {% extends parent_template|default:"epass/base_epass.html" %}
 
+{% load widget_tweaks %}
+
 {% block title %}
 {{ block.super }} - Update Applicant
 {% endblock %}
@@ -8,54 +10,52 @@
 <form action="{{ applicant.get_update_url }}" method="post">
   <div class="tmarg">
     {% csrf_token %}
+
+    {% for hidden_field in form.hidden_fields %}
+      {{ hidden_field }}
+    {% endfor %}
+
     <div class="row">
-      <div class="six columns">
-        {{ form.subject.errors }}
+      <div class="four columns">
         <label for="{{ form.subject.first_name }}">First Name:</label>
-        {{ form.first_name }}
+        {% render_field form.first_name class="u-full-width" %}
       </div>
-      <div class="six columns">
-        {{ form.subject.errors }}
+      <div class="four columns">
         <label for="{{ form.subject.last_name }}">Last Name:</label>
-        {{ form.last_name }}
+        {% render_field form.last_name class="u-full-width" %}
       </div>
-    </div>
-    <div class="row">
-      <div class="six columns">
-        {{ form.subject.errors }}
+      <div class="four columns">
         <label for="{{ form.subject.passport_number }}">Passport Number:</label>
-        {{ form.passport_number }}
+        {% render_field form.passport_number class="u-full-width" %}
       </div>
-      <div class="six columns">
-        {{ form.subject.errors }}
+    </div>
+
+    <div class="row">
+      <div class="four columns">
         <label for="{{ form.subject.form_number }}">Form Number:</label>
-        {{ form.form_number }}
+        {% render_field form.form_number class="u-full-width" %}
       </div>
-    </div>
-    <div class="row">
-      <div class="six columns">
-        {{ form.subject.errors }}
+      <div class="four columns">
         <label for="{{ form.subject.sticker_number }}">Sticker Number:</label>
-        {{ form.sticker_number }}
+        {% render_field form.sticker_number class="u-full-width" %}
       </div>
-      <div class="six columns">
-        {{ form.subject.errors }}
+      <div class="four columns">
         <label for="{{ form.subject.extension_period }}">Extension Period:</label>
-        {{ form.extension_period }}
+        {% render_field form.extension_period class="u-full-width" %}
       </div>
     </div>
+
     <div class="row">
-      <div class="six columns">
-        {{ form.subject.errors }}
+      <div class="four columns">
         <label for="{{ form.subject.purchase_date }}">Purchase Date:</label>
-        {{ form.purchase_date }}
+        {% render_field form.purchase_date class="u-full-width" %}
       </div>
-      <div class="six columns">
-        {{ form.subject.errors }}
+      <div class="four columns">
         <label for="{{ form.subject.slug }}">Slug:</label>
-        {{ form.slug }}
+        {% render_field form.slug class="u-full-width" %}
       </div>
     </div>
+
       <button class="button-primary" type="submit">Update Applicant</button>
   </div>
 </form>

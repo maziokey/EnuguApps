@@ -1,17 +1,39 @@
 {% extends parent_template|default:"contact/base_contact.html" %}
 
+{% load widget_tweaks %}
+
 {% block title %}
 {{ block.super }} - Contact Us!
 {% endblock %}
 
 {% block content %}
-<div class="row">
+<form action="{% url 'contact' %}" method="post">
   <div class="tmarg">
-    <form action="{% url 'contact' %}" method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Contact Us</button>
-  </form>
+    {% csrf_token %}
+
+    {% for hidden_field in form.hidden_fields %}
+      {{ hidden_field }}
+    {% endfor %}
+
+    <div class="row">
+      <div class="six columns">
+        <label for="{{ form.subject.reason }}">Reason:</label>
+        {% render_field form.reason class="u-full-width" %}
+      </div>
+      <div class="six columns">
+        <label for="{{ form.subject.email }}">Email:</label>
+        {% render_field form.email class="u-full-width" %}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="twelve columns">
+        <label for="{{ form.subject.text }}">Text:</label>
+        {% render_field form.text class="u-full-width" %}
+      </div>
+    </div>
+
+    <button class="button-primary" type="submit">Contact Us</button>
   </div>
-</div>
+</form>
 {% endblock %}

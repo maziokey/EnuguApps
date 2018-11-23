@@ -1,17 +1,32 @@
 {% extends 'base.html' %}
 
+{% load widget_tweaks %}
+
 {% block title %}
 {{ block.super }} - Login
 {% endblock %}
 
 {% block content %}
-  <div class="row">
-    <div class="offset-by-two five columns">
-      <form method="post" novalidate>
-        {% csrf_token %}
-        {{ form.as_p }}
-      <button type="submit">Log in</button>
-     </form>
+<form method="post" novalidate>
+  <div class="tmarg">
+    {% csrf_token %}
+
+    {% for hidden_field in form.hidden_fields %}
+      {{ hidden_field }}
+    {% endfor %}
+
+    <div class="row">
+      <div class="six columns">
+        <label for="{{ form.subject.username }}">Username:</label>
+        {% render_field form.username class="u-full-width" %}
+      </div>
+
+      <div class="six columns">
+        <label for="{{ form.subject.password }}">Password:</label>
+        {% render_field form.password class="u-full-width" %}
+      </div>
     </div>
+    <button class="button-primary" type="submit">Log In</button>
   </div>
+</form>
 {% endblock %}
